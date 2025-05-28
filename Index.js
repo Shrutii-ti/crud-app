@@ -2,6 +2,8 @@ const dotenv = require("dotenv");
 const express = require ("express");
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
+const userRoutes = require("./routes/userRoutes");
+const todoRoutes = require("./routes/todoRoutes");
 
 dotenv.config();
 
@@ -16,7 +18,12 @@ app.get("/", function(req,res) {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/user",userRoutes);
+app.use("/api/todos", todoRoutes); 
 
 app.listen(PORT, () => {
     console.log("server is running on" +  PORT);
 });
+
+// Adding morgan =GPT
+// inside 

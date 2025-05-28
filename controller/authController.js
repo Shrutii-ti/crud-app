@@ -27,3 +27,15 @@ exports.resendOTP = async (req, res) => {
     const response = await authService.resend(email);
     res.status(response.status).json(response);
 }
+
+exports.forgotPassword = async (req, res) => {
+  const { email } = req.body;
+  const response = await authService.forgotPassword(email);
+  res.status(response.status).json(response);
+};
+
+exports.resetPassword = async (req, res) => {
+  const { email, otp, newPassword } = req.body;
+  const response = await authService.resetPassword(email, otp, newPassword);
+  res.status(response.status).json(response);
+};

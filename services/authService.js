@@ -125,3 +125,4 @@ exports.resetPassword = async (email, otp, newPassword) => {
   }
 };
 
+

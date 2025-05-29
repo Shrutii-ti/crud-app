@@ -22,7 +22,7 @@ app.use("/api/user",userRoutes);
 app.use("/api/todos", todoRoutes); 
 
 app.listen(PORT, () => {
-    console.log("server is running on" +  PORT);
+    console.log(`✅ Server running on http://localhost:${PORT}`);
 });
 
 // Adding morgan =GPT

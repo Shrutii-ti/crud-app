@@ -1,0 +1,72 @@
+.home-start {
+  display: flex;
+  justify-content: center;  
+
+  align-items: center;      
+  background-color: #e9ecef; /* optional background */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+}
+.home-container {
+  padding: 2rem;
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #f9fafb;
+  color: #333;
+
+  /* Added border */
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+
+  max-width: 400px;  /* fixed max width */
+  width: 90vw;       /* responsive width */
+  min-height: 30vh;
+
+}
+
+/* Container for buttons */
+.home-buttons {
+  margin-top: 2rem;
+  display: flex;                  /* Arrange buttons inline */
+  justify-content: center;        /* Center buttons horizontally */
+  gap: 1rem;                     /* Space between buttons */
+  flex-wrap: wrap;               /* Wrap on small screens */
+}
+
+/* Common button styles */
+.home-btn {
+  padding: 0.75rem 1.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background-color: #482728;     /* Primary brand color */
+  color: #BDCFB5;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  min-width: 130px;
+  text-align: center;
+}
+
+/* Button hover/focus effect */
+.home-btn:hover,
+.home-btn:focus {
+  background-color: #0056b3;    /* Darker shade */
+  box-shadow: 0 6px 10px rgba(0, 86, 179, 0.4);
+  outline: none;
+}
+
+/* Responsive improvements */
+@media (max-width: 480px) {
+  .home-btn {
+    flex: 1 1 100%;             /* Buttons full width on small screens */
+    min-width: auto;
+  }
+}

@@ -6,6 +6,7 @@ import Home from "../src/Pages/Home";
 import Register from "../src/Pages/Register";
 import Verify from "../src/Pages/Verify";
 import Login from "../src/Pages/Login";  // make sure the path casing matches your file structure
+import ResetPassword from "./Pages/ResetPassword";
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/verify" element={<Verify />} />
         <Route path="/login" element={<Login />} />   {/* Added Login route */}
+        <Route path="/reset-password" element={<ResetPassword />} />
+
       </Routes>
     </Router>
   );

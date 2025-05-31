@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import FormWrapper from '../Componets/FormWrapper';  // adjust path if needed
+import { loginUser, forgotPassword } from '../Services/authServices'; // make sure forgotPassword exists here
+import FormWrapper from '../Componets/FormWrapper';
+import "./Login.css";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState('');
   const [loading, setLoading] = useState(false);
+  const [forgotLoading, setForgotLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -25,23 +27,39 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post('http://localhost:8890/api/auth/login', formData);
+      await loginUser(formData);
       setMessage('✅ Login successful!');
       setMessageType('success');
 
-      // Save token or user info here if needed
-      // localStorage.setItem('token', res.data.token);
-
-      // Redirect to dashboard or home page after login
       setTimeout(() => {
         navigate('/dashboard'); // change route as needed
       }, 1500);
     } catch (err) {
-      const msg = err.response?.data?.message || '❌ Login failed.';
-      setMessage(msg);
+      setMessage(err.response?.data?.message || '❌ Login failed.');
       setMessageType('error');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleForgotPassword = async () => {
+    setMessage('');
+    setMessageType('');
+    setForgotLoading(true);
+
+    try {
+      await forgotPassword(formData.email);
+      setMessage('✅ OTP sent to your email!');
+      setMessageType('success');
+
+      setTimeout(() => {
+        navigate('/reset-password', { state: { email: formData.email } });
+      }, 1500);
+    } catch (err) {
+      setMessage(err.response?.data?.message || '❌ Failed to send OTP.');
+      setMessageType('error');
+    } finally {
+      setForgotLoading(false);
     }
   };
 
@@ -55,7 +73,6 @@ const Login = () => {
         onChange={handleChange}
         required
       />
-
       <input
         type="password"
         name="password"
@@ -67,6 +84,15 @@ const Login = () => {
 
       <button type="submit" disabled={loading}>
         {loading ? 'Logging in...' : 'Login'}
+      </button>
+
+      <button
+        type="button"
+        onClick={handleForgotPassword}
+        disabled={forgotLoading || !formData.email}
+        style={{ marginTop: '1rem', backgroundColor: '#6c757d' }}
+      >
+        {forgotLoading ? 'Sending OTP...' : 'Forgot Password?'}
       </button>
 
       {message && (

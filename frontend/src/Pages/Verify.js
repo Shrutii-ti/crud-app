@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import FormWrapper from '../Componets/FormWrapper';  // Adjust path as needed
+import "./Verify.css";
 
 const Verify = () => {
   const [email, setEmail] = useState('');

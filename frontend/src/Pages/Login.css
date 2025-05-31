@@ -20,23 +20,27 @@
 }
 
 /* Inputs styling */
-.login-form input {
+.login-form input,
+.reset-form input {
   padding: 0.75rem 1rem;
   font-size: 1rem;
   margin-bottom: 1rem;
   border-radius: 6px;
   border: 1px solid #ccc;
   transition: border-color 0.3s ease;
+  width: 100%;
 }
 
-.login-form input:focus {
+.login-form input:focus,
+.reset-form input:focus {
   outline: none;
   border-color: #007bff;
   box-shadow: 0 0 5px #007bffaa;
 }
 
 /* Button styling */
-.login-form button {
+.login-form button,
+.reset-form button {
   padding: 0.75rem;
   font-size: 1rem;
   background-color: #007bff;
@@ -44,34 +48,16 @@
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  margin-top: 1rem;
   transition: background-color 0.3s ease;
 }
 
-.login-form button:hover:not(:disabled) {
+.login-form button:hover:not(:disabled),
+.reset-form button:hover:not(:disabled) {
   background-color: #0056b3;
 }
 
-.login-form button:disabled {
+.login-form button:disabled,
+.reset-form button:disabled {
   background-color: #6c757d;
   cursor: not-allowed;
-}
-
-/* Success and error message styling */
-.message {
-  margin-top: 1rem;
-  padding: 0.75rem;
-  border-radius: 6px;
-  text-align: center;
-  font-weight: bold;
-}
-
-.success {
-  background-color: #d4edda;
-  color: #155724;
-}
-
-.error {
-  background-color: #f8d7da;
-  color: #721c24;
 }

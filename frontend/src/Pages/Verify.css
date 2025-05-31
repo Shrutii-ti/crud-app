@@ -1,5 +1,5 @@
-/* Container covering full viewport with soft blue background */
-.register-page {
+/* Center the form vertically and horizontally with a light blue background */
+.verify-page {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,9 +7,9 @@
   background: #e6f0ff; /* Soft light blue */
 }
 
-/* The form box styling */
-.register-form {
-  background-color: #fff; /* White background */
+/* Form container style */
+.verify-form {
+  background-color: #fff;
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -19,8 +19,8 @@
   max-width: 400px;
 }
 
-/* Inputs styling */
-.register-form input {
+/* Inputs style */
+.verify-form input {
   padding: 0.75rem 1rem;
   font-size: 1rem;
   margin-bottom: 1rem;
@@ -29,17 +29,17 @@
   transition: border-color 0.3s ease;
 }
 
-.register-form input:focus {
+.verify-form input:focus {
   outline: none;
-  border-color: #007bff; /* Bright blue on focus */
+  border-color: #007bff;
   box-shadow: 0 0 5px #007bffaa;
 }
 
-/* Buttons styling */
-.register-form button {
+/* Button style */
+.verify-form button {
   padding: 0.75rem;
   font-size: 1rem;
-  background-color: #007bff; /* Bootstrap blue */
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 6px;
@@ -48,16 +48,16 @@
   transition: background-color 0.3s ease;
 }
 
-.register-form button:hover:not(:disabled) {
+.verify-form button:hover:not(:disabled) {
   background-color: #0056b3;
 }
 
-.register-form button:disabled {
+.verify-form button:disabled {
   background-color: #6c757d;
   cursor: not-allowed;
 }
 
-/* Message box for success or error */
+/* Message box for success/error */
 .message {
   margin-top: 1rem;
   padding: 0.75rem;
@@ -74,21 +74,4 @@
 .error {
   background-color: #f8d7da; /* light red */
   color: #721c24; /* dark red */
-}
-
-/* Verify OTP button */
-.verify-btn {
-  margin-top: 1rem;
-  padding: 0.75rem;
-  font-size: 1rem;
-  background-color: #28a745; /* Bootstrap green */
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.verify-btn:hover {
-  background-color: #1e7e34;
 }

@@ -2,7 +2,7 @@ const dotenv = require("dotenv");
 const express = require("express");
 const morgan = require("morgan"); // ✅ Import morgan
 const connectDB = require("./config/db");
-
+const cors = require('cors');
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
 const todoRoutes = require("./routes/todoRoutes");
@@ -10,10 +10,15 @@ const todoRoutes = require("./routes/todoRoutes");
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8890;
 
 // ✅ Connect to MongoDB
 connectDB();
+app.use(cors({
+  origin: 'http://localhost:3000', // ✅ frontend origin
+  credentials: true               // if you're using cookies/auth headers
+}));
+
 
 // ✅ Middleware
 app.use(express.json());

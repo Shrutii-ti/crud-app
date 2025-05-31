@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { registerUser } from '../Services/authServices';
-import FormWrapper from '../Componets/FormWrapper';
+import FormWrapper from '../Componets/FormWrapper';  // adjust path if needed
 
-const Register = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', password: '' });
+const Login = () => {
+  const [formData, setFormData] = useState({ email: '', password: '' });
   const [message, setMessage] = useState('');
-  const [messageType, setMessageType] = useState(''); // 'success' or 'error'
-  const [showVerify, setShowVerify] = useState(false);
+  const [messageType, setMessageType] = useState('');
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -26,30 +25,28 @@ const Register = () => {
     setLoading(true);
 
     try {
-      await registerUser(formData);
-      setMessage('✅ Registered successfully! Please verify OTP.');
+      const res = await axios.post('http://localhost:8890/api/auth/login', formData);
+      setMessage('✅ Login successful!');
       setMessageType('success');
-      setShowVerify(true);
+
+      // Save token or user info here if needed
+      // localStorage.setItem('token', res.data.token);
+
+      // Redirect to dashboard or home page after login
+      setTimeout(() => {
+        navigate('/dashboard'); // change route as needed
+      }, 1500);
     } catch (err) {
-      const msg = err.response?.data?.message || '❌ Registration failed.';
+      const msg = err.response?.data?.message || '❌ Login failed.';
       setMessage(msg);
       setMessageType('error');
-      setShowVerify(false);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <FormWrapper title="Register" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="name"
-        placeholder="Full Name"
-        value={formData.name}
-        onChange={handleChange}
-        required
-      />
+    <FormWrapper title="Login" onSubmit={handleSubmit}>
       <input
         type="email"
         name="email"
@@ -58,6 +55,7 @@ const Register = () => {
         onChange={handleChange}
         required
       />
+
       <input
         type="password"
         name="password"
@@ -68,7 +66,7 @@ const Register = () => {
       />
 
       <button type="submit" disabled={loading}>
-        {loading ? 'Registering...' : 'Register'}
+        {loading ? 'Logging in...' : 'Login'}
       </button>
 
       {message && (
@@ -76,19 +74,8 @@ const Register = () => {
           {message}
         </div>
       )}
-
-      {showVerify && (
-        <button
-          type="button"
-          onClick={() => navigate('/verify')}
-          className="verify-btn"
-        >
-          Verify OTP
-        </button>
-      )}
     </FormWrapper>
   );
 };
 
-export default Register;
-
+export default Login;

@@ -1,12 +1,20 @@
 const todoService = require("../services/todoService");
-
 exports.createTodo = async (req, res) => {
   try {
-    const userId = req.user._id;
+    const userId = req.user?._id; // Optional chaining in case req.user is undefined
+    if (!userId) {
+      console.error("User ID not found in request object.");
+      return res.status(401).json({ message: "Unauthorized: User not found" });
+    }
+
+    console.log("Creating todo for userId:", userId);
+    console.log("Request body:", req.body);
+
     const response = await todoService.createTodo(req.body, userId);
+
     res.status(response.status).json(response);
   } catch (err) {
-    console.error("Error in createTodo:", err.message);
+    console.error("❌ Error in createTodo:", err); // log full error object
     res.status(500).json({ message: "Something went wrong", error: err.message });
   }
 };

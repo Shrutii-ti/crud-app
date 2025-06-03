@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { registerUser, resendOtp } from '../Services/authServices';
 import FormWrapper from '../Componets/FormWrapper';
-import "./Register.css";
 
 const Register = () => {
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });

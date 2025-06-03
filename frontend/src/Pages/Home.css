@@ -1,19 +1,25 @@
-/* Home.css */
+:root {
+  --dark: #482728;
+  --mid-dark: #7e4e60;
+  --soft: white;
+  --mint: white;
+  --sage: #bdcfb5;
+}
 
 .home-start {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #e6f0ff; /* Soft blue background */
+  background: var(--sage); /* Calm green background */
   padding: 1rem;
 }
 
 .home-container {
-  background: #fff;
+  background: var(--soft);
   padding: 3rem 2.5rem;
   border-radius: 14px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 20px rgba(72, 39, 40, 0.1); /* subtle shadow with dark tone */
   max-width: 480px;
   text-align: center;
   width: 100%;
@@ -22,14 +28,14 @@
 .home-container h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: #004085;
+  color: var(--dark);
   font-weight: 700;
 }
 
 .home-container p {
   font-size: 1.125rem;
   margin-bottom: 2rem;
-  color: #333;
+  color: var(--mid-dark);
 }
 
 .home-buttons {
@@ -39,7 +45,7 @@
 }
 
 .home-btn {
-  background-color: #007bff;
+  background-color: var(--dark);
   color: white;
   border: none;
   padding: 0.75rem 1.75rem;
@@ -50,10 +56,10 @@
 }
 
 .home-btn:hover {
-  background-color: #0056b3;
+  background-color: var(--mid-dark);
 }
 
 .home-btn:focus {
-  outline: 2px solid #0056b3;
+  outline: 2px solid var(--mid-dark);
   outline-offset: 2px;
 }

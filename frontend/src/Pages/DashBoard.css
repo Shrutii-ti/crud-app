@@ -1,0 +1,146 @@
+:root {
+  --dark: #482728;
+  --mid-dark: #7e4e60;
+  --soft: white;
+  --mint: white;
+  --sage: #bdcfb5;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--mint);
+}
+
+.dashboard-container {
+  padding: 2rem;
+  background: var(--mint);
+  min-height: 100vh;
+}
+
+.dashboard-heading {
+  text-align: center;
+  color: var(--dark);
+  margin-bottom: 2rem;
+}
+
+.form-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+  background: var(--sage);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.form-section input,
+.form-section select,
+.form-section button {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--dark);
+  font-size: 0.9rem;
+}
+
+.form-section button {
+  background: var(--dark);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.form-section button:hover {
+  background: var(--mid-dark);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(72, 39, 40, 0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+thead {
+  background: var(--soft);
+  color: var(--dark);
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #ddd;
+  word-break: break-word;
+}
+
+tbody tr:hover {
+  background-color: var(--sage);
+}
+
+button {
+  margin: 0 2px;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: var(--mid-dark);
+  color: white;
+  font-size: 0.8rem;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: var(--dark);
+}
+
+button.save {
+  background: var(--dark);
+}
+
+button.cancel {
+  background: #bbb;
+}
+
+.filter-section {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filter-section select,
+.filter-section button {
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.apply-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.apply-btn:hover {
+  background-color: #218838;
+}
+
+.clear-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.clear-btn:hover {
+  background-color: #c82333;
+}

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { loginUser, forgotPassword } from '../Services/authServices'; // make sure forgotPassword exists here
+import { loginUser, forgotPassword } from '../Services/authServices';
 import FormWrapper from '../Componets/FormWrapper';
-import "./Login.css";
+import { useAuth } from '../Context/authContext'; // ✅ import useAuth
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -12,6 +12,7 @@ const Login = () => {
   const [forgotLoading, setForgotLoading] = useState(false);
 
   const navigate = useNavigate();
+  const { login } = useAuth(); // ✅ get login function from context
 
   const handleChange = (e) => {
     setFormData(prev => ({
@@ -27,13 +28,14 @@ const Login = () => {
     setLoading(true);
 
     try {
-      await loginUser(formData);
+      const res = await loginUser(formData);        // ✅ get response
+      login(res.data.token);                         // ✅ save token via context
       setMessage('✅ Login successful!');
       setMessageType('success');
 
       setTimeout(() => {
-        navigate('/dashboard'); // change route as needed
-      }, 1500);
+        navigate('/dashboard');
+      }, 1000);
     } catch (err) {
       setMessage(err.response?.data?.message || '❌ Login failed.');
       setMessageType('error');

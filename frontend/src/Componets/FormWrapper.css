@@ -1,13 +1,15 @@
+/* Page container with a soft pastel background */
 .form-page {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #e9f0fb;
+  background: #c0f8d1; /* Soft mint green */
 }
 
+/* Form box styling */
 .form-container {
-  background-color: white;
+  background-color: #ffffff;
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -17,21 +19,35 @@
   flex-direction: column;
 }
 
+/* Input fields styling */
 .form-container input {
   padding: 0.75rem 1rem;
   font-size: 1rem;
   margin-bottom: 1rem;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid #b287a3; /* Soft mauve border */
+  transition: border-color 0.3s ease;
 }
 
+.form-container input:focus {
+  outline: none;
+  border-color: #7e4e60; /* Darker mauve on focus */
+  box-shadow: 0 0 5px #7e4e60aa;
+}
+
+/* Button styling */
 .form-container button {
   padding: 0.75rem;
   font-size: 1rem;
-  background-color: #007bff;
+  background-color: #7e4e60; /* Mauve */
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+  background-color: #482728; /* Deep brown-red */
 }
